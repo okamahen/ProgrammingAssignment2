@@ -12,17 +12,17 @@
 ## install.packages("matlib")
 ## library(matlib)
 makeCacheMatrix <- function(x = matrix()) {
-  m <- null
+  m <- NULL
   x
-  if(det(x) < 1 && det(x) >=0) {
-      message("matrix have inverse, insert to variable")
-      val <- x
-    } else {
-      message("no possible inverse, try again!!")
-      val <- NULL
-    }
-    val #need evaluate for det(x) 0,000xx, cannot create inverse but still catch as having inverse
+  if(det(x) > 1 || det(x) < -1) {
+    message("matrix have inverse, insert to variable")
+    val <- x
+  } else {
+    message("no possible inverse, try again!!")
+    val <- NULL
   }
+  val #need evaluate for det(x) 0,000xx, cannot create inverse but still catch as having inverse
+}
 
 
 ## Write a short comment describing this function
