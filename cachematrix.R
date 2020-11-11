@@ -13,7 +13,12 @@
 ## library(matlib)
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
-  x
+  
+  newMatrix <- function(y){
+    x <<- y
+    m <<- NULL
+  }
+  
   if(det(x) > 1 || det(x) < -1) {
     message("matrix have inverse, insert to variable")
     val <- x
@@ -21,7 +26,15 @@ makeCacheMatrix <- function(x = matrix()) {
     message("no possible inverse, try again!!")
     val <- NULL
   }
-  val #need evaluate for det(x) 0,000xx, cannot create inverse but still catch as having inverse
+  
+  getMatrix <- function(){
+    val
+  }
+  
+  getCache <- function(){
+    m
+  }
+  
 }
 
 
@@ -29,4 +42,15 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+  m <- x$getCache()
+  
+  if(!is.null(m)) {
+    message("use cached value")
+    return(m)
+  }
+  
+  data <- x$getMatrix()
+  m <- det(m)
+  
+  
 }
