@@ -1,16 +1,18 @@
-## Testing push tutorial from Alan Berger at https://bit.ly/36hNe87
-
-## Dependancies : "matlib" packages
-## Put comments here that give an overall description of what your
-## functions do
+## Programming Assignment on R Programming - John Hopkins University
 ## explanation on inverse : https://bit.ly/3phBF9A
-
-## makeCacheMatrix = create matrix, and evaluate if the matrix does
-## have a possible inverse, and send to specific variable
 
 ## uncomment below if matlib not installed in your machine
 ## install.packages("matlib")
 ## library(matlib)
+
+## ///INTRODUCTION///
+## makeCacheMatrix is a function to collect variable with Matrix, evaluate,
+## and store in memory to be used by cacheSolve function to check inverse.
+## Function only works if the matrix  is non-singular (det() !=0)
+## and non-generalized (see https://bit.ly/32FlitX)
+
+## makeCacheMatrix = create matrix, and evaluate if the matrix does
+## have a possible inverse, and send to specific variable. 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
   
@@ -45,8 +47,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+## cacheSolve = check matrix stored by makeCacheMatrix and then solve the
+## inverse, if value stored in memory use the value without re-calculating.
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
   m <- x$getCache()
