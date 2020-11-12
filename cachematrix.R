@@ -31,10 +31,17 @@ makeCacheMatrix <- function(x = matrix()) {
     val
   }
   
+  setMatrix <- function(z){
+    m <<- z
+  }
+  
   getCache <- function(){
     m
   }
   
+  list(newMatrix = newMatrix, getMatrix = getMatrix,
+       setMatrix = setMatrix, getCache = getCache
+       )
 }
 
 
@@ -50,7 +57,7 @@ cacheSolve <- function(x, ...) {
   }
   
   data <- x$getMatrix()
-  m <- det(m)
-  
-  
+  m <- inv(data)
+  x$setMatrix(m)
+  m
 }
